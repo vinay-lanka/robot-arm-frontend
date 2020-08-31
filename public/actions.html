@@ -98,120 +98,75 @@
           Support
         </a>
         <div class="text-center mt-20" id="signout">
-          <a href="login.html">
-            <button class="btn btn-primary" type="button">Sign Out</button>
-          </a>
+          <button class="btn btn-primary" type="button">Sign Out</button>
         </div>
       </div>
       <!-- Sidebar end -->
 
       <!-- Content wrapper start -->
       <div class="content-wrapper">
-        <div class="controller card">
-          <input
-            type="text"
-            class="form-control"
-            value=""
-            readonly="readonly"
-            style="height: 5em;"
-          />
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Action Name"
-            style="margin-top: 10px;"
-          />
-          <div class="allbtns d-flex">
-            <div class="controls d-flex flex-wrap">
-              <div class="control-btn">
-                <div id="+x">
-                  +x
-                </div>
-              </div>
-              <div class="control-btn">
-                <div id="-x">
-                  -x
-                </div>
-              </div>
-              <div class="control-btn">
-                <div id="+y">
-                  +y
-                </div>
-              </div>
-              <div class="control-btn">
-                <div id="-y">
-                  -y
-                </div>
-              </div>
-              <div class="control-btn">
-                <div id="+z">
-                  +z
-                </div>
-              </div>
-              <div class="control-btn">
-                <div id="-z">
-                  -z
-                </div>
-              </div>
-            </div>
-            <div class="extras">
-              <div class="additional-btn orange">
-                <div id="reset">
-                  <span>
-                    <!-- <i class="fa fa-save"></i> -->
-                  </span>
-                  Save
-                </div>
-              </div>
-              <div class="additional-btn">
-                <div id="reset">
-                  <!-- <i class="fa fa-cloud-upload-alt"></i> -->
-                  Export
-                </div>
-              </div>
-              <div class="additional-btn red">
-                <div id="reset">
-                  <!-- <i class="fa fa-trash-alt"></i> -->
-                  Reset
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="saved card overflow-y-hidden overflow-y-md-auto">
+        <style>
+          .saved {
+            width: 550px;
+            height: 560px;
+            border-radius: 9px;
+            margin: 50px 0px 0px 0px;
+          }
+          .central-search {
+            height: 730px;
+          }
+          @media (max-width: 1190px) {
+            .saved {
+              display: block;
+            }
+          }
+          @media (max-width: 600px) {
+            .central-search {
+              width: auto;
+              min-width: 300px;
+            }
+            .saved {
+              width: auto;
+              min-width: 250px;
+            }
+          }
+        </style>
+        <div class="central-search card">
           <input
             class="form-control search"
             type="text"
             placeholder="Search"
             id="action-search"
           />
-          <div class="h-600">
-            <ul>
-              <li class="d-flex justify-content-between align-items-center">
-                Saved Action 1
-                <i class="fa fa-remove"></i>
-              </li>
-              <li class="d-flex justify-content-between align-items-center">
-                Saved Action 2
-                <i class="fa fa-remove"></i>
-              </li>
-              <li class="d-flex justify-content-between align-items-center">
-                Saved Action 3
-                <i class="fa fa-remove"></i>
-              </li>
-              <li class="d-flex justify-content-between align-items-center">
-                Saved Action 4
-                <i class="fa fa-remove"></i>
-              </li>
-              <li class="d-flex justify-content-between align-items-center">
-                Saved Action 5
-                <i class="fa fa-remove"></i>
-              </li>
-              <li class="d-flex justify-content-between align-items-center">
-                Saved Action 6
-                <i class="fa fa-remove"></i>
-              </li>
-            </ul>
+          <div class="saved card overflow-y-hidden overflow-y-md-auto">
+            <div class="h-600 innercard">
+              <ul>
+                <li class="d-flex justify-content-between align-items-center">
+                  Saved Action 1
+                  <i class="fa fa-remove"></i>
+                </li>
+                <li class="d-flex justify-content-between align-items-center">
+                  Saved Action 2
+                  <i class="fa fa-remove"></i>
+                </li>
+                <li class="d-flex justify-content-between align-items-center">
+                  Saved Action 3
+                  <i class="fa fa-remove"></i>
+                </li>
+                <li class="d-flex justify-content-between align-items-center">
+                  Saved Action 4
+                  <i class="fa fa-remove"></i>
+                </li>
+                <li class="d-flex justify-content-between align-items-center">
+                  Saved Action 5
+                  <i class="fa fa-remove"></i>
+                </li>
+                <li class="d-flex justify-content-between align-items-center">
+                  Saved Action 6
+                  <i class="fa fa-remove"></i>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <!--
