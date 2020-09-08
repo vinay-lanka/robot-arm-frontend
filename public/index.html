@@ -14,12 +14,14 @@
       src="https://kit.fontawesome.com/b01135f521.js"
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript"
+    src="http://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+    <script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
   </head>
   <body
     class="with-custom-webkit-scrollbars with-custom-css-scrollbars"
     data-sidebar-shortcut-enabled="true"
-    data-dm-shortcut-enabled="true"
-  >
+    data-dm-shortcut-enabled="true">
     <!-- Modals go here -->
 
     <div
@@ -69,9 +71,9 @@
             src="/IMG-20200505-WA0006-1.jpg"
             class="img-fluid rounded-circle"
             alt="rounded circle image"
-            style="max-width: 60%;"
+            style="max-width: 50%;"
           />
-          <h5>VAISHAK MENON</h5>
+          <h5>Some User</h5>
         </div>
         <a href="#" class="sidebar-link sidebar-link-with-icon">
           <span class="sidebar-icon">
@@ -97,8 +99,22 @@
           </span>
           Support
         </a>
+        <div id="statusIndicator" class="sidebar-link">
+          <p id="connecting">
+            Connecting to rosbridge
+          </p>
+          <p id="connected" style="color:#00D600; display:none">
+            Connected
+          </p>
+          <p id="error" style="color:#FF0000; display:none">
+            Error in the backend!
+          </p>
+          <p id="closed" style="display:none">
+            Connection closed.
+          </p>
+        </div>
         <div class="text-center mt-20" id="signout">
-          <a href="login.html">
+          <a href="/user/logout">
             <button class="btn btn-primary" type="button">Sign Out</button>
           </a>
         </div>
@@ -108,13 +124,14 @@
       <!-- Content wrapper start -->
       <div class="content-wrapper">
         <div class="controller card">
-          <input
-            type="text"
-            class="form-control"
-            value=""
-            readonly="readonly"
-            style="height: 5em;"
-          />
+          <div>
+            <h5>Joint States (Live)</h5>
+            <p id="p1"></p>
+            <p id="p2"></p>
+            <p id="p3"></p>
+            <p id="p4"></p>
+            <p id="p5"></p>
+          </div>
           <input
             type="text"
             class="form-control"
@@ -124,32 +141,32 @@
           <div class="allbtns d-flex">
             <div class="controls d-flex flex-wrap">
               <div class="control-btn">
-                <div id="+x">
+                <div id="+x" onmousedown="xplusDown()" onmouseup="xplusUp()">
                   +x
                 </div>
               </div>
               <div class="control-btn">
-                <div id="-x">
+                <div id="-x" onmousedown="xminusDown()" onmouseup="xminusUp()">
                   -x
                 </div>
               </div>
               <div class="control-btn">
-                <div id="+y">
+                <div id="+y" onmousedown="yplusDown()" onmouseup="yplusUp()">
                   +y
                 </div>
               </div>
               <div class="control-btn">
-                <div id="-y">
+                <div id="-y" onmousedown="yminusDown()" onmouseup="yminusUp()">
                   -y
                 </div>
               </div>
               <div class="control-btn">
-                <div id="+z">
+                <div id="+z" onmousedown="zplusDown()" onmouseup="zplusUp()">
                   +z
                 </div>
               </div>
               <div class="control-btn">
-                <div id="-z">
+                <div id="-z" onmousedown="zminusDown()" onmouseup="zminusUp()">
                   -z
                 </div>
               </div>
@@ -226,6 +243,7 @@
     <!-- Page wrapper end -->
 
     <!-- Halfmoon JS -->
+    <script src="./js/rosbridge.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/halfmoonui/halfmoon@1.0.4/js/halfmoon.min.js"></script>
     <script>
       halfmoon.toggleDarkMode();
