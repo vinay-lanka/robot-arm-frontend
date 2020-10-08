@@ -39,59 +39,171 @@ listener.subscribe(function(message) {
   document.getElementById("p3").innerHTML = message.position[2];
   document.getElementById("p4").innerHTML = message.position[3];
   document.getElementById("p5").innerHTML = message.position[4];
-  // console.log(message);
 });
 
-//JogParam
-var jogstate = new ROSLIB.Param({
+//jogState Publisher
+var jogPublisher = new ROSLIB.Topic({
   ros : ros,
-  name : 'jogstate'
+  name : '/jogState',
+  messageType : 'geometry_msgs/Pose'
 });
+var jogMsg = new ROSLIB.Message({
+  position : {
+    x : 0,
+    y : 0,
+    z : 0
+  },
+  orientation : {
+    x : 0,
+    y : 0,
+    z : 0,
+    w: 0
+  }
+});
+uptimer = setInterval(function () {
+  jogPublisher.publish(jogMsg);
+}, 100);
 
-//Then we set the value of the param, which is sent to the ROS Parameter Server.
-jogstate.set([0,0,0,0,0,0]);
-jogstate.get(function(value) {
-  console.log(value);
-});
 //xplus
 function xplusDown() {
-  jogstate.set([1,0,0,0,0,0]);
-}
-function xplusUp() {
-  jogstate.set([0,0,0,0,0,0]);
+  var jogMsg = new ROSLIB.Message({
+    position : {
+      x : 0.01,
+      y : 0,
+      z : 0
+    },
+    orientation : {
+      x : 0,
+      y : 0,
+      z : 0,
+      w: 0
+    }
+  });
+  clearInterval(uptimer);
+  downtimer = setInterval(function () {
+    jogPublisher.publish(jogMsg);
+  }, 25);
 }
 //xminus
 function xminusDown() {
-  jogstate.set([0,1,0,0,0,0]);
-}
-function xminusUp() {
-  jogstate.set([0,0,0,0,0,0]);
+  console.log("called");
+  var jogMsg = new ROSLIB.Message({
+    position : {
+      x : -0.01,
+      y : 0,
+      z : 0
+    },
+    orientation : {
+      x : 0,
+      y : 0,
+      z : 0,
+      w: 0
+    }
+  });
+  clearInterval(uptimer);
+  downtimer = setInterval(function () {
+    jogPublisher.publish(jogMsg);
+  }, 25);
 }
 //yplus
 function yplusDown() {
-  jogstate.set([0,0,1,0,0,0]);
-}
-function yplusUp() {
-  jogstate.set([0,0,0,0,0,0]);
+  var jogMsg = new ROSLIB.Message({
+    position : {
+      x : 0,
+      y : 0.01,
+      z : 0
+    },
+    orientation : {
+      x : 0,
+      y : 0,
+      z : 0,
+      w: 0
+    }
+  });
+  clearInterval(uptimer);
+  downtimer = setInterval(function () {
+    jogPublisher.publish(jogMsg);
+  }, 25);
 }
 //yminus
 function yminusDown() {
-  jogstate.set([0,0,0,1,0,0]);
-}
-function yminusUp() {
-  jogstate.set([0,0,0,0,0,0]);
+  var jogMsg = new ROSLIB.Message({
+    position : {
+      x : 0,
+      y : -0.01,
+      z : 0
+    },
+    orientation : {
+      x : 0,
+      y : 0,
+      z : 0,
+      w: 0
+    }
+  });
+  clearInterval(uptimer);
+  downtimer = setInterval(function () {
+    jogPublisher.publish(jogMsg);
+  }, 25);
 }
 //zplus
 function zplusDown() {
-  jogstate.set([0,0,0,0,1,0]);
-}
-function zplusUp() {
-  jogstate.set([0,0,0,0,0,0]);
+  var jogMsg = new ROSLIB.Message({
+    position : {
+      x : 0,
+      y : 0,
+      z : 0.01
+    },
+    orientation : {
+      x : 0,
+      y : 0,
+      z : 0,
+      w: 0
+    }
+  });
+  clearInterval(uptimer);
+  downtimer = setInterval(function () {
+    jogPublisher.publish(jogMsg);
+  }, 25);
 }
 //zminus
 function zminusDown() {
-  jogstate.set([0,0,0,0,0,1]);
+  var jogMsg = new ROSLIB.Message({
+    position : {
+      x : 0,
+      y : 0,
+      z : -0.01
+    },
+    orientation : {
+      x : 0,
+      y : 0,
+      z : 0,
+      w: 0
+    }
+  });
+  clearInterval(uptimer);
+  downtimer = setInterval(function () {
+    jogPublisher.publish(jogMsg);
+  }, 25);
 }
-function zminusUp() {
-  jogstate.set([0,0,0,0,0,0]);
-} 
+
+//un-press
+function Up() {
+  // console.log("called");
+  var jogMsg = new ROSLIB.Message({
+    position : {
+      x : 0,
+      y : 0,
+      z : 0
+    },
+    orientation : {
+      x : 0,
+      y : 0,
+      z : 0,
+      w: 0
+    }
+  });
+  clearInterval(downtimer);
+  uptimer = setInterval(function () {
+    jogPublisher.publish(jogMsg);
+  }, 25);
+}
