@@ -23,7 +23,7 @@ ros.on('close', function() {
   document.getElementById('closed').style.display = 'inline';
 });
 // Create a connection to the rosbridge WebSocket server.
-var x = location.hostname;
+var x = 115.98.102.222;
 ros.connect('ws://' + x + ':9090');
 
 //JointState Listener

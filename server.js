@@ -16,17 +16,7 @@ app.use(cookieParser());
 app.use(cors());
 
 app.get('/', (req,res)=>{
-    if(req.cookies.auth){
-        jwt.verify(req.cookies.auth.token, 'secret key',(err,verified)=>{
-            if(err){
-                res.json({err});
-            }else{
-                res.sendFile("/public/index.html", {'root': './'});
-            }
-        });
-    }else{
-        res.sendFile("/public/login.html", {'root': './'});
-    }
+    res.sendFile("/public/login.html", {'root': './'});
 });
 
 app.use(express.static(__dirname+'/public/'));
